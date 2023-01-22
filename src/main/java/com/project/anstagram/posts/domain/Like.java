@@ -5,20 +5,17 @@ import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
-import java.util.List;
 
 @Entity
 @Getter @Setter
-public class Posts {
+public class Like {
 
     @Id @GeneratedValue
     private Long id;
-    private String username;
 
-    private String contents;
-
-    @OneToMany(mappedBy = "posts")
-    private List<Like> likeList;
+    @ManyToOne
+    @JoinColumn(name = "posts_id")
+    private Posts posts;
 
     @ManyToOne
     @JoinColumn(name = "user_id")
