@@ -1,6 +1,6 @@
 package com.project.anstagram.user.entity;
 
-import com.project.anstagram.posts.domain.Like;
+import com.project.anstagram.posts.domain.Likes;
 import com.project.anstagram.posts.domain.Posts;
 import lombok.Getter;
 import lombok.Setter;
@@ -13,16 +13,16 @@ import java.util.List;
 
 @Entity
 @Getter @Setter
-public class User {
+public class Users {
 
     @Id @GeneratedValue
     private Long id;
     private String nickname;
 
-    @OneToMany(mappedBy = "user")
-    private List<Like> likeList;
+    @OneToMany(mappedBy = "users")
+    private List<Likes> likeList;
 
-    @OneToMany(mappedBy = "user")
+    @OneToMany(mappedBy = "users")
     private List<Posts> postsList;
 
 }

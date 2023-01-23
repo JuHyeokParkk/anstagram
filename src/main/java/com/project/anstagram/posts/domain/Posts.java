@@ -1,6 +1,6 @@
 package com.project.anstagram.posts.domain;
 
-import com.project.anstagram.user.entity.User;
+import com.project.anstagram.user.entity.Users;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -18,9 +18,9 @@ public class Posts {
     private String contents;
 
     @OneToMany(mappedBy = "posts")
-    private List<Like> likeList;
+    private List<Likes> likeList;
 
     @ManyToOne
-    @JoinColumn(name = "user_id")
-    private User user;
+    @JoinColumn(name = "users_id")
+    private Users users;
 }
