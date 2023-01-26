@@ -5,24 +5,23 @@ import com.project.anstagram.posts.domain.Posts;
 import lombok.Getter;
 import lombok.Setter;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
 @Getter @Setter
-public class Users {
+@Table(name = "users")
+public class User {
 
     @Id @GeneratedValue
     private Long id;
     private String nickname;
 
-    @OneToMany(mappedBy = "users")
-    private List<Likes> likeList;
+    @OneToMany(mappedBy = "user")
+    private List<Likes> likeList = new ArrayList<>();
 
-    @OneToMany(mappedBy = "users")
-    private List<Posts> postsList;
+    @OneToMany(mappedBy = "user")
+    private List<Posts> postsList = new ArrayList<>();
 
 }
