@@ -10,22 +10,24 @@ import java.util.List;
 
 @Entity
 @Getter @Setter
-public class Posts {
+public class Comment {
 
     @Id @GeneratedValue
     private Long id;
-    private String username;
+    private String content;
 
-    private String contents;
+    @ManyToOne
+    @JoinColumn(name = "parent_id")
+    private Comment parent;
 
-    @OneToMany(mappedBy = "posts")
-    private List<Likes> likeList = new ArrayList<>();
+    @OneToMany(mappedBy = "parent")
+    private List<Comment> children = new ArrayList<>();
 
-    @OneToMany(mappedBy = "posts")
-    private List<Comment> commentList = new ArrayList<>();
+    @ManyToOne
+    @JoinColumn(name = "posts_id")
+    private Posts posts;
 
     @ManyToOne
     @JoinColumn(name = "user_id")
     private User user;
-
 }

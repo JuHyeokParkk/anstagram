@@ -1,5 +1,6 @@
 package com.project.anstagram.user.entity;
 
+import com.project.anstagram.posts.domain.Comment;
 import com.project.anstagram.posts.domain.Likes;
 import com.project.anstagram.posts.domain.Posts;
 import lombok.Getter;
@@ -23,5 +24,8 @@ public class User {
 
     @OneToMany(mappedBy = "user")
     private List<Posts> postsList = new ArrayList<>();
+
+    @OneToMany(mappedBy = "user")
+    private List<Comment> commentList = new ArrayList<>();
 
 }
