@@ -21,5 +21,16 @@ public class PostsRepository {
         return em.find(Posts.class, id);
     }
 
+    public void remove(Posts posts) {
+        em.remove(posts);
+    }
+
+    public void update(Long id, String content) {
+        Posts posts = findById(id);
+        posts.setContents(content);
+    }
+
+
+
 
 }

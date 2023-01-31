@@ -18,10 +18,10 @@ public class Posts {
 
     private String contents;
 
-    @OneToMany(mappedBy = "posts")
+    @OneToMany(mappedBy = "posts", orphanRemoval = true)
     private List<Likes> likeList = new ArrayList<>();
 
-    @OneToMany(mappedBy = "posts")
+    @OneToMany(mappedBy = "posts", orphanRemoval = true)
     private List<Comment> commentList = new ArrayList<>();
 
     @ManyToOne

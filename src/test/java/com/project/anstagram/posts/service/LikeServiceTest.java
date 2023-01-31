@@ -26,7 +26,7 @@ public class LikeServiceTest {
         userService.save(user);
 
         Posts posts = new Posts();
-        postsService.addUser(posts, user);
+        postsService.addPosts(posts, user);
 
         Assertions.assertThat(likeService.didUserPushLike(posts, user)).isFalse();
 
@@ -44,7 +44,7 @@ public class LikeServiceTest {
         userService.save(user);
 
         Posts posts = new Posts();
-        postsService.addUser(posts, user);
+        postsService.addPosts(posts, user);
 
         // 좋아요 push
         likeService.updateLike(posts, user);

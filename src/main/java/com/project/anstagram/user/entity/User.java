@@ -22,7 +22,7 @@ public class User {
     @OneToMany(mappedBy = "user")
     private List<Likes> likeList = new ArrayList<>();
 
-    @OneToMany(mappedBy = "user")
+    @OneToMany(mappedBy = "user", orphanRemoval = true)
     private List<Posts> postsList = new ArrayList<>();
 
     @OneToMany(mappedBy = "user")

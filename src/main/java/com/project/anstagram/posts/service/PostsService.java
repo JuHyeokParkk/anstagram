@@ -14,23 +14,34 @@ public class PostsService {
 
     private final PostsRepository postsRepository;
 
-    @Transactional
-    public Long save(Posts posts) {
-        return postsRepository.save(posts);
-    }
-
     public Posts findById(Long id) {
         return postsRepository.findById(id);
     }
 
-    public void addUser(Posts posts, User user) {
-        posts.setUser(user);
-        user.getPostsList().add(posts);
-        postsRepository.save(posts);
+    public void addPosts(Posts posts, User user) {
+            posts.setUser(user);
+            user.getPostsList().add(posts);
+            postsRepository.save(posts);
     }
 
     public void addLike(Posts posts, Likes likes) {
         posts.getLikeList().add(likes);
+    }
+
+    public void remove(Long postId, User user) {
+        Posts posts = postsRepository.findById(postId);
+
+        if(!posts.getUser().equals(user)) {
+            return;
+        }
+
+        user.getPostsList().remove(posts);
+
+        postsRepository.remove(posts);
+    }
+
+    public void update(Long postId, String content) {
+        postsRepository.update(postId, content);
     }
 
 
