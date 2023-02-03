@@ -1,15 +1,20 @@
 package com.project.anstagram.posts.domain;
 
 import com.project.anstagram.user.entity.User;
+import lombok.Builder;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
 @Entity
 @Getter @Setter
+@Builder
+@NoArgsConstructor
 public class Posts {
 
     @Id @GeneratedValue
@@ -17,6 +22,8 @@ public class Posts {
     private String username;
 
     private String contents;
+
+    private LocalDateTime localDateTime;
 
     @OneToMany(mappedBy = "posts", orphanRemoval = true)
     private List<Likes> likeList = new ArrayList<>();
@@ -27,5 +34,7 @@ public class Posts {
     @ManyToOne
     @JoinColumn(name = "user_id")
     private User user;
+
+
 
 }

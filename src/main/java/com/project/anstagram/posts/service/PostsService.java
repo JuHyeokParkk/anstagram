@@ -8,6 +8,8 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
+
 @Service
 @RequiredArgsConstructor
 public class PostsService {
@@ -42,6 +44,10 @@ public class PostsService {
 
     public void update(Long postId, String content) {
         postsRepository.update(postId, content);
+    }
+
+    public List<Posts> findAll() {
+        return postsRepository.findAll();
     }
 
 

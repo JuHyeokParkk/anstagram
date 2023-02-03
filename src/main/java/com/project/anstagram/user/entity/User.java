@@ -3,7 +3,9 @@ package com.project.anstagram.user.entity;
 import com.project.anstagram.posts.domain.Comment;
 import com.project.anstagram.posts.domain.Likes;
 import com.project.anstagram.posts.domain.Posts;
+import lombok.Builder;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
@@ -12,6 +14,8 @@ import java.util.List;
 
 @Entity
 @Getter @Setter
+@Builder
+@NoArgsConstructor
 @Table(name = "users")
 public class User {
 

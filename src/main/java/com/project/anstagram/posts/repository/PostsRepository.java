@@ -5,6 +5,7 @@ import org.springframework.stereotype.Repository;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import java.util.List;
 
 @Repository
 public class PostsRepository {
@@ -28,6 +29,11 @@ public class PostsRepository {
     public void update(Long id, String content) {
         Posts posts = findById(id);
         posts.setContents(content);
+    }
+
+    public List<Posts> findAll() {
+        return em.createQuery("select p from Posts p", Posts.class)
+                .getResultList();
     }
 
 
